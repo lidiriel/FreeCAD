@@ -62,7 +62,6 @@
 #include <Mod/TechDraw/App/DrawProjGroupItem.h>
 #include <Mod/TechDraw/App/DrawProjGroup.h>
 #include <Mod/TechDraw/App/DrawViewDimension.h>
-#include <Mod/TechDraw/App/DrawViewGDTReference.h>
 #include <Mod/TechDraw/App/DrawViewBalloon.h>
 #include <Mod/TechDraw/App/DrawViewClip.h>
 #include <Mod/TechDraw/App/DrawViewSymbol.h>
@@ -82,20 +81,6 @@
 
 using namespace TechDrawGui;
 using namespace std;
-
-////TODO merge with CommandCreateDims
-//enum EdgeTypeUtil{
-//        isInvalid = 0,
-//        isHorizontal,
-//        isVertical,
-//        isDiagonal,
-//        isCircle,
-//        isEllipse,
-//        isBSplineCircle,
-//        isBSpline,
-//        isAngle,
-//        isAngle3Pt
-//    };
 
 
 //===========================================================================
@@ -1560,5 +1545,4 @@ void CreateTechDrawCommands(void)
     rcCmdMgr.addCommand(new CmdTechDrawArchView());
     rcCmdMgr.addCommand(new CmdTechDrawSpreadsheetView());
     rcCmdMgr.addCommand(new CmdTechDrawBalloon());
-    rcCmdMgr.addCommand(new CmdTechDrawGDTReference());
 }

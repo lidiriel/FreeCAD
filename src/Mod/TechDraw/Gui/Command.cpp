@@ -911,6 +911,7 @@ bool CmdTechDrawGDTReference::isActive(void)
 }
 
 
+
 //===========================================================================
 // TechDraw_Balloon
 //===========================================================================
@@ -1010,7 +1011,6 @@ CmdTechDrawClipGroup::CmdTechDrawClipGroup()
     // setting the
     sGroup        = QT_TR_NOOP("TechDraw");
     sMenuText     = QT_TR_NOOP("Insert Clip Group");
-    // TODO correct this
     sToolTipText  = sToolTipText;
     sWhatsThis    = "TechDraw_ClipGroup";
     sStatusTip    = sToolTipText;
@@ -1545,4 +1545,5 @@ void CreateTechDrawCommands(void)
     rcCmdMgr.addCommand(new CmdTechDrawArchView());
     rcCmdMgr.addCommand(new CmdTechDrawSpreadsheetView());
     rcCmdMgr.addCommand(new CmdTechDrawBalloon());
+    rcCmdMgr.addCommand(new CmdTechDrawGDTReference());
 }

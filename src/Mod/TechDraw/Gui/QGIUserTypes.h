@@ -9,7 +9,6 @@ QGraphicsItemEdge: 103
 QGraphicsItemFace: 104
 QGraphicsItemVertex: 105
 QGraphicsItemViewDimension : 106
-QGraphicsItemViewBalloon : 140
 QGraphicsItemDatumLabel : 107
 QGraphicsItemViewSection : 108
 QGraphicsItemArrow: 109
@@ -27,6 +26,8 @@ QGCustomRect: 133
 QGCustomLabel:135
 QGCustomBorder: 136
 QGDisplayArea: 137
+QGraphicsItemViewBalloon : 140
+QGraphicsItemViewGDTReference : 145
 QGraphicsItemTemplate: 150
 QGraphicsItemDrawingTemplate: 151
 QGraphicsItemSVGTemplate: 153

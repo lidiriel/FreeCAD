@@ -176,7 +176,6 @@ protected:
     Base::Vector3d m_linkDir;
     double m_arrowAngle;
     double m_lineAngle;
-    //Base::Vector2d m_edgeDir;
 
 private:
     Base::Vector3d calculateCenter(TechDraw::PointPair & segment);

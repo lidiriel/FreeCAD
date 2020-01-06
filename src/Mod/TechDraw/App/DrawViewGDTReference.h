@@ -68,7 +68,6 @@ public:
     App::PropertyLinkSubList	References2D;
     App::PropertyEnumeration	Type;  // Edge, Cosmetic, Feature frame
     App::PropertyString			Text;
-    App::PropertyFloat			SymbolScale;
 
     short mustExecute() const;
     PointPair getLinearPoints(void) {return m_linearPoints; }

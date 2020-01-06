@@ -141,7 +141,8 @@ void QGIReferenceLabel::mouseReleaseEvent(QGraphicsSceneMouseEvent * event)
 
 void QGIReferenceLabel::mouseDoubleClickEvent(QGraphicsSceneMouseEvent * event)
 {
-	// TODO nothing doing : no task managment
+	// nothing doing : no task managment
+	Q_UNUSED(event);
 }
 
 void QGIReferenceLabel::hoverEnterEvent(QGraphicsSceneHoverEvent *event)
@@ -530,12 +531,11 @@ void QGIViewGDTReference::draw_modifier(bool modifier)
     referenceLabel->rotate();
 
     Base::Vector3d dLineStart;
-    float scale = reference->SymbolScale.getValue();
     QPainterPath referencePath;
 
     // Square symbol
-    textWidth = (textWidth * scale) + Rez::guiX(referenceLabel->marginWidth());
-    textHeight = (textHeight * scale) + Rez::guiX(referenceLabel->marginHeight());
+    textWidth = textWidth + Rez::guiX(referenceLabel->marginWidth());
+    textHeight = textHeight + Rez::guiX(referenceLabel->marginHeight());
     double max = std::max(textWidth, textHeight);
     referencePath.addRect(referenceLabel->X() -(max / 2.0), referenceLabel->Y() - (max / 2.0), max, max);
     double offset = (max / 2.0);
@@ -584,7 +584,7 @@ void QGIViewGDTReference::draw_modifier(bool modifier)
         //TODO: parent redraw still required with new frame/label??
         parentItem()->update();
     } else {
-        Base::Console().Log("INFO - QGIVD::draw - no parent to update\n");
+        Base::Console().Log("INFO - QGIViewGDTReference::draw - no parent to update\n");
     }
 
 }

@@ -115,20 +115,7 @@ std::vector<std::string> ViewProviderGDTReference::getDisplayModes(void) const
 
 bool ViewProviderGDTReference::setEdit(int ModNum)
 {
-//    if (ModNum == ViewProvider::Default ) {
-//        if (Gui::Control().activeDialog())  {
-//            return false;
-//        }
-//        // clear the selection (convenience)
-//        Gui::Selection().clearSelection();
-//        auto qgivBalloon(dynamic_cast<QGIViewBalloon*>(getQView()));
-//        if (qgivBalloon) {
-//            Gui::Control().showDialog(new TaskDlgBalloon(qgivBalloon));
-//        }
-//        return true;
-//    } else {
-//        return ViewProviderDrawingView::setEdit(ModNum);
-//    }
+	// Nothing to doing :  no task associate
     return true;
 }
 

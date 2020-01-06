@@ -78,20 +78,15 @@ DrawViewGDTReference::DrawViewGDTReference(void)
 	ADD_PROPERTY(Type,((long)0));
 	Type.setStatus(App::Property::ReadOnly,true);
 
-	ADD_PROPERTY_TYPE(Text ,     ("A"),"",App::Prop_None,"The text to be displayed");
-
-    ADD_PROPERTY_TYPE(SymbolScale,(1),"",(App::PropertyType)(App::Prop_None),"Reference symbol scale");
+	ADD_PROPERTY_TYPE(Text , ("A"),"",App::Prop_None,"The text to be displayed");
 
     m_linearPoints.first  = Base::Vector3d(0,0,0);
     m_linearPoints.second = Base::Vector3d(0,0,0);
 
-    //hide the DrawView properties that don't apply to reference
-    ScaleType.setStatus(App::Property::ReadOnly,true);
+    // hide the DrawView properties that don't apply to reference
     ScaleType.setStatus(App::Property::Hidden,true);
-    Scale.setStatus(App::Property::ReadOnly,true);
-    Scale.setStatus(App::Property::Hidden,false);
-    Rotation.setStatus(App::Property::ReadOnly,true);
-    Rotation.setStatus(App::Property::Hidden,false);
+    Scale.setStatus(App::Property::Hidden,true);
+    Rotation.setStatus(App::Property::Hidden,true);
     Caption.setStatus(App::Property::Hidden,true);
 }
 
@@ -237,12 +232,6 @@ bool DrawViewGDTReference::checkReferences2D() const
                             result = false;
                             break;
                         }
-//                    } else if (DrawUtil::getGeomTypeFromName(s) == "Vertex") {
-//                        TechDraw::Vertex* v = getViewPart()->getProjVertexByIndex(idx);
-//                        if (v == nullptr) {
-//                            result = false;
-//                            break;
-//                        }
                     }
                 } else {
                     result = false;
@@ -260,7 +249,7 @@ bool DrawViewGDTReference::checkReferences2D() const
 }
 
 /*
-PyObject *DrawViewBalloon::getPyObject(void)
+PyObject *DrawViewGDTReference::getPyObject(void)
 {
     if (PythonObject.is(Py::_None())) {
         // ref counter is set to 1

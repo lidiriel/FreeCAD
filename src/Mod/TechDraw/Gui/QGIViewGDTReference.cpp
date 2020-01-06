@@ -284,8 +284,8 @@ QGIViewGDTReference::QGIViewGDTReference() :
     referenceArrow->setNormalColor(getNormalColor());
     referenceArrow->setFillColor(getNormalColor());
     referenceArrow->setPrettyNormal();
-    // TODO change style to PYRAMID
-    //referenceArrow->setStyle(PYRAMID);
+    referenceArrow->setStyle(PYRAMID);
+    referenceArrow->setSize(3);
 
     referenceLabel->setZValue(ZVALUE::LABEL);
     referenceArrow->setZValue(ZVALUE::DIMENSION);

@@ -73,6 +73,8 @@ DrawViewGDTReference::DrawViewGDTReference(void)
 {
 	ADD_PROPERTY_TYPE(References2D,(0,0),"",(App::Prop_None),"Projected Geometry References");
 	References2D.setScope(App::LinkScope::Global);
+	X.setStatus(App::Property::Hidden,true);
+	Y.setStatus(App::Property::Hidden,true);
 
 	Type.setEnums(TypeEnums);     // object referenced type : Edge, Cosmetic line, Feature frame.
 	ADD_PROPERTY(Type,((long)0));

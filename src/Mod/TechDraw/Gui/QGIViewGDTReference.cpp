@@ -429,10 +429,10 @@ void QGIViewGDTReference::updateReference()
         return;
     }
 
-//    QFont font = referenceLabel->getFont();
-//    font.setPixelSize(calculateFontPixelSize(viewprovider->Fontsize.getValue()));
-//    font.setFamily(QString::fromUtf8(viewprovider->Font.getValue()));
-//    referenceLabel->setFont(font);
+    QFont font = referenceLabel->getFont();
+    font.setPixelSize(calculateFontPixelSize(viewprovider->Fontsize.getValue()));
+    font.setFamily(QString::fromUtf8(viewprovider->Font.getValue()));
+    referenceLabel->setFont(font);
 
     prepareGeometryChange();
     QString labelText = QString::fromUtf8(reference->Text.getStrValue().data());
@@ -533,9 +533,11 @@ void QGIViewGDTReference::draw_modifier(bool modifier)
     Base::Vector3d dLineStart;
     QPainterPath referencePath;
 
+    float scale = reference->SymbolScale.getValue();
+
     // Square symbol
-    textWidth = textWidth + Rez::guiX(referenceLabel->marginWidth());
-    textHeight = textHeight + Rez::guiX(referenceLabel->marginHeight());
+    textWidth = textWidth*scale + Rez::guiX(referenceLabel->marginWidth());
+    textHeight = textHeight*scale + Rez::guiX(referenceLabel->marginHeight());
     double max = std::max(textWidth, textHeight);
     referencePath.addRect(referenceLabel->X() -(max / 2.0), referenceLabel->Y() - (max / 2.0), max, max);
     double offset = (max / 2.0);

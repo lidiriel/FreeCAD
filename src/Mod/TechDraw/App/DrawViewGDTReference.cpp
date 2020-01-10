@@ -81,14 +81,18 @@ DrawViewGDTReference::DrawViewGDTReference(void)
 	Type.setStatus(App::Property::ReadOnly,true);
 
 	ADD_PROPERTY_TYPE(Text , ("A"),"",App::Prop_None,"The text to be displayed");
+	ADD_PROPERTY_TYPE(SymbolScale,(1),"",(App::PropertyType)(App::Prop_None),"GDTReference symbol scale");
 
     m_linearPoints.first  = Base::Vector3d(0,0,0);
     m_linearPoints.second = Base::Vector3d(0,0,0);
 
     // hide the DrawView properties that don't apply to reference
     ScaleType.setStatus(App::Property::Hidden,true);
+    ScaleType.setStatus(App::Property::ReadOnly,true);
     Scale.setStatus(App::Property::Hidden,true);
+    Scale.setStatus(App::Property::ReadOnly,true);
     Rotation.setStatus(App::Property::Hidden,true);
+    Rotation.setStatus(App::Property::ReadOnly,true);
     Caption.setStatus(App::Property::Hidden,true);
 }
 

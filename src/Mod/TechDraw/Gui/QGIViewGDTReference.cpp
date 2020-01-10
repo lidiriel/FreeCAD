@@ -424,15 +424,15 @@ void QGIViewGDTReference::updateReference()
     if( reference == nullptr ) {
         return;
     }
-    auto vp = static_cast<ViewProviderGDTReference*>(getViewProvider(getViewObject()));
-    if ( vp == nullptr ) {
+    auto viewprovider = static_cast<ViewProviderGDTReference*>(getViewProvider(getViewObject()));
+    if ( viewprovider == nullptr ) {
         return;
     }
 
-    QFont font = referenceLabel->getFont();
-    font.setPixelSize(calculateFontPixelSize(vp->Fontsize.getValue()));
-    font.setFamily(QString::fromUtf8(vp->Font.getValue()));
-    referenceLabel->setFont(font);
+//    QFont font = referenceLabel->getFont();
+//    font.setPixelSize(calculateFontPixelSize(viewprovider->Fontsize.getValue()));
+//    font.setFamily(QString::fromUtf8(viewprovider->Font.getValue()));
+//    referenceLabel->setFont(font);
 
     prepareGeometryChange();
     QString labelText = QString::fromUtf8(reference->Text.getStrValue().data());

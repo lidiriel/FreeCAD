@@ -73,8 +73,8 @@ DrawViewGDTReference::DrawViewGDTReference(void)
 {
 	ADD_PROPERTY_TYPE(References2D,(0,0),"",(App::Prop_None),"Projected Geometry References");
 	References2D.setScope(App::LinkScope::Global);
-	X.setStatus(App::Property::Hidden,true);
-	Y.setStatus(App::Property::Hidden,true);
+	X.setStatus(App::Property::ReadOnly,true);
+	Y.setStatus(App::Property::ReadOnly,true);
 
 	Type.setEnums(TypeEnums);     // object referenced type : Edge, Cosmetic line, Feature frame.
 	ADD_PROPERTY(Type,((long)0));
@@ -100,7 +100,7 @@ DrawViewGDTReference::~DrawViewGDTReference()
 //are there non-blank references?
 bool DrawViewGDTReference::has2DReferences(void) const
 {
-    Base::Console().Message("DV_GDTReference::has2DReferences() - %s\n",getNameInDocument());
+    Base::Console().Message("DrawViewGDTReference::has2DReferences() - %s\n",getNameInDocument());
     bool result = false;
 
     const std::vector<App::DocumentObject*> &objects = References2D.getValues();
@@ -129,15 +129,8 @@ void DrawViewGDTReference::onChanged(const App::Property* prop)
 
 void DrawViewGDTReference::onDocumentRestored()
 {
-
+	execute();
 }
-
-void DrawViewGDTReference::handleChangedPropertyType(Base::XMLReader &reader, const char *TypeName, App::Property *prop)
-{
-    // also check for changed properties of the base class
-    DrawView::handleChangedPropertyType(reader, TypeName, prop);
-}
-
 
 short DrawViewGDTReference::mustExecute() const
 {

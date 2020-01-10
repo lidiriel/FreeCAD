@@ -90,7 +90,6 @@ protected:
     PointPair getPointsOneEdge();
     bool has2DReferences(void) const;
     bool checkReferences2D(void) const;
-	virtual void handleChangedPropertyType(Base::XMLReader &reader, const char *TypeName, App::Property * prop);
 
 private:
     PointPair   m_linearPoints;

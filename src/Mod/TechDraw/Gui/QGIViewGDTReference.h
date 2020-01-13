@@ -35,6 +35,7 @@
 #include "QGIView.h"
 #include "QGIViewPart.h"
 #include "QGCustomText.h"
+#include <Mod/TechDraw/App/DrawViewGDTReference.h>
 
 namespace TechDraw {
 class DrawViewGDTReference;

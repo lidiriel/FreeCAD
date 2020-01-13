@@ -73,20 +73,26 @@ DrawViewGDTReference::DrawViewGDTReference(void)
 {
 	ADD_PROPERTY_TYPE(References2D,(0,0),"",(App::Prop_None),"Projected Geometry References");
 	References2D.setScope(App::LinkScope::Global);
+	X.setStatus(App::Property::ReadOnly,true);
+	Y.setStatus(App::Property::ReadOnly,true);
 
 	Type.setEnums(TypeEnums);     // object referenced type : Edge, Cosmetic line, Feature frame.
 	ADD_PROPERTY(Type,((long)0));
 	Type.setStatus(App::Property::ReadOnly,true);
 
 	ADD_PROPERTY_TYPE(Text , ("A"),"",App::Prop_None,"The text to be displayed");
+	ADD_PROPERTY_TYPE(SymbolScale,(1),"",(App::PropertyType)(App::Prop_None),"GDTReference symbol scale");
 
     m_linearPoints.first  = Base::Vector3d(0,0,0);
     m_linearPoints.second = Base::Vector3d(0,0,0);
 
     // hide the DrawView properties that don't apply to reference
     ScaleType.setStatus(App::Property::Hidden,true);
+    ScaleType.setStatus(App::Property::ReadOnly,true);
     Scale.setStatus(App::Property::Hidden,true);
+    Scale.setStatus(App::Property::ReadOnly,true);
     Rotation.setStatus(App::Property::Hidden,true);
+    Rotation.setStatus(App::Property::ReadOnly,true);
     Caption.setStatus(App::Property::Hidden,true);
 }
 
@@ -98,7 +104,7 @@ DrawViewGDTReference::~DrawViewGDTReference()
 //are there non-blank references?
 bool DrawViewGDTReference::has2DReferences(void) const
 {
-    Base::Console().Message("DV_GDTReference::has2DReferences() - %s\n",getNameInDocument());
+    Base::Console().Message("DrawViewGDTReference::has2DReferences() - %s\n",getNameInDocument());
     bool result = false;
 
     const std::vector<App::DocumentObject*> &objects = References2D.getValues();
@@ -127,7 +133,7 @@ void DrawViewGDTReference::onChanged(const App::Property* prop)
 
 void DrawViewGDTReference::onDocumentRestored()
 {
-
+	execute();
 }
 
 void DrawViewGDTReference::handleChangedPropertyType(Base::XMLReader &reader, const char *TypeName, App::Property *prop)

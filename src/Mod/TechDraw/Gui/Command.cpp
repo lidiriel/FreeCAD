@@ -62,6 +62,7 @@
 #include <Mod/TechDraw/App/DrawProjGroupItem.h>
 #include <Mod/TechDraw/App/DrawProjGroup.h>
 #include <Mod/TechDraw/App/DrawViewDimension.h>
+#include <Mod/TechDraw/App/DrawViewGDTReference.h>
 #include <Mod/TechDraw/App/DrawViewBalloon.h>
 #include <Mod/TechDraw/App/DrawViewClip.h>
 #include <Mod/TechDraw/App/DrawViewSymbol.h>
@@ -911,7 +912,6 @@ bool CmdTechDrawGDTReference::isActive(void)
 }
 
 
-
 //===========================================================================
 // TechDraw_Balloon
 //===========================================================================
@@ -1545,5 +1545,4 @@ void CreateTechDrawCommands(void)
     rcCmdMgr.addCommand(new CmdTechDrawArchView());
     rcCmdMgr.addCommand(new CmdTechDrawSpreadsheetView());
     rcCmdMgr.addCommand(new CmdTechDrawBalloon());
-    rcCmdMgr.addCommand(new CmdTechDrawGDTReference());
 }

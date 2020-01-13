@@ -284,8 +284,8 @@ QGIViewGDTReference::QGIViewGDTReference() :
     referenceArrow->setNormalColor(getNormalColor());
     referenceArrow->setFillColor(getNormalColor());
     referenceArrow->setPrettyNormal();
-    // TODO change style to PYRAMID
-    //referenceArrow->setStyle(PYRAMID);
+    referenceArrow->setStyle(PYRAMID);
+    referenceArrow->setSize(3);
 
     referenceLabel->setZValue(ZVALUE::LABEL);
     referenceArrow->setZValue(ZVALUE::DIMENSION);
@@ -424,14 +424,14 @@ void QGIViewGDTReference::updateReference()
     if( reference == nullptr ) {
         return;
     }
-    auto vp = static_cast<ViewProviderGDTReference*>(getViewProvider(getViewObject()));
-    if ( vp == nullptr ) {
+    auto viewprovider = static_cast<ViewProviderGDTReference*>(getViewProvider(getViewObject()));
+    if ( viewprovider == nullptr ) {
         return;
     }
 
     QFont font = referenceLabel->getFont();
-    font.setPixelSize(calculateFontPixelSize(vp->Fontsize.getValue()));
-    font.setFamily(QString::fromUtf8(vp->Font.getValue()));
+    font.setPixelSize(calculateFontPixelSize(viewprovider->Fontsize.getValue()));
+    font.setFamily(QString::fromUtf8(viewprovider->Font.getValue()));
     referenceLabel->setFont(font);
 
     prepareGeometryChange();
@@ -533,9 +533,11 @@ void QGIViewGDTReference::draw_modifier(bool modifier)
     Base::Vector3d dLineStart;
     QPainterPath referencePath;
 
+    float scale = reference->SymbolScale.getValue();
+
     // Square symbol
-    textWidth = textWidth + Rez::guiX(referenceLabel->marginWidth());
-    textHeight = textHeight + Rez::guiX(referenceLabel->marginHeight());
+    textWidth = textWidth*scale + Rez::guiX(referenceLabel->marginWidth());
+    textHeight = textHeight*scale + Rez::guiX(referenceLabel->marginHeight());
     double max = std::max(textWidth, textHeight);
     referencePath.addRect(referenceLabel->X() -(max / 2.0), referenceLabel->Y() - (max / 2.0), max, max);
     double offset = (max / 2.0);

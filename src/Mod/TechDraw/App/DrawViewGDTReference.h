@@ -68,6 +68,7 @@ public:
     App::PropertyLinkSubList	References2D;
     App::PropertyEnumeration	Type;  // Edge, Cosmetic, Feature frame
     App::PropertyString			Text;
+    App::PropertyFloat       	SymbolScale;
 
     short mustExecute() const;
     PointPair getLinearPoints(void) {return m_linearPoints; }
@@ -90,7 +91,6 @@ protected:
     PointPair getPointsOneEdge();
     bool has2DReferences(void) const;
     bool checkReferences2D(void) const;
-	virtual void handleChangedPropertyType(Base::XMLReader &reader, const char *TypeName, App::Property * prop);
 
 private:
     PointPair   m_linearPoints;
